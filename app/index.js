@@ -10,7 +10,7 @@ var mb = menubar({
   browserWindow: {
     width: 300,
     height: 250,
-    alwaysOnTop: false,
+    alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

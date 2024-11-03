@@ -32,6 +32,14 @@ class Timer {
       if (this.minutes == 0 && this.seconds == 0) {
         notifyUser();
         this.stopTimer();
+
+        this.resetTimer('#time');
+        this.resetTimer('#time_short');     
+        this.resetTimer('#time_long');     
+
+        $("#start").show();
+        $("#stop").hide();
+
       }
     }, 1000);
   }
@@ -66,6 +74,11 @@ class Timer {
     }
   }
 }
+
+// Enable dark theme by default
+window.addEventListener("DOMContentLoaded", () => {
+  themeManager.toggleTheme();
+});
 
 class ThemeManager {
   constructor() {
@@ -175,6 +188,20 @@ $("#long_reset").click(() => {
   $("#long_stop").hide();
 });
 
+$("#setting_submit").click(() => {
+  const newTime = parseInt($("#time_new").val(), 10);
+  if (isNaN(newTime)) {
+    // || newTime <= 0
+    alert("Please enter a valid number greater than 0");
+    return;
+  }
+  normalTimer = new Timer(newTime);
+  
+  $('a[href="#pomodoro"]').tab('show');
+  
+});
+
+
 function closeApp() {
   ipc.send("closeApp", "close");
 }
@@ -183,15 +210,36 @@ function toggleTheme() {
   themeManager.toggleTheme();
 }
 
+function openSettings() {
+  $('a[href="#settings"]').tab('show');
+}
+
+function resetButtons() {
+  $("#start").show();
+  $("#stop").hide();
+  $("#short_start").show();
+  $("#short_stop").hide();
+  $("#long_start").show();
+  $("#long_stop").hide();
+}
+
 $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
   let activeTab = e.target.toString();
   let nameActiveTab = activeTab.split("#");
 
+  // On switching tabs reset the buttons, as the timer is reset
+  resetButtons();
+    
   if (nameActiveTab[1] == "pomodoro") {
+
     normalTimer.resetTimer("#time");
+
   } else if (nameActiveTab[1] == "short") {
+
     shortTimer.resetTimer("#time_short");
+
   } else {
+
     longTimer.resetTimer("#time_long");
   }
 });

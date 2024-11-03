@@ -19,13 +19,13 @@ function notifyUser() {
       body: "Hey there! You've been notified!"
     });
 
-    //var notiSound=document.getElementById('notiSound');
-    //notiSound.play();
+    var notiSound=document.getElementById('notiSound');
+    notiSound.play();
 
-    //setTimeout( function () { notification.close(); }, 3000);
+    setTimeout( function () { notification.close(); }, 3000);
 
     notification.onclose = function(){
-      //notiSound.pause();
+      notiSound.pause();
     }
   }
 }

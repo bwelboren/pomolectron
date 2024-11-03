@@ -35,9 +35,9 @@
           <button type="button" class="navbar-toggle custom-btn" onclick="closeApp();" title="Close Pomolectron">
             <i class="glyphicon glyphicon-off"></i>
           </button>
-          <a href="https://github.com/amitmerchant1990/pomolectron" type="button" class="navbar-toggle custom-btn" title="About">
-            <i class="glyphicon glyphicon-info-sign"></i>
-          </a>
+          <button type="button" class="navbar-toggle custom-btn" onclick="openSettings();" title="Open settings">
+            <i class="glyphicon glyphicon-cog"></i>
+          </button>
           <button type="button" class="navbar-toggle custom-btn" onclick="toggleTheme();" title="Toggle theme">
             <i class="glyphicon glyphicon-refresh"></i>
           </button>
@@ -51,6 +51,8 @@
       <li class="active"><a data-toggle="tab" href="#pomodoro">Pomodoro</a></li>
       <li><a data-toggle="tab" href="#short">Short break</a></li>
       <li><a data-toggle="tab" href="#long">Long break</a></li>
+      <a data-toggle="tab" href="#settings"></a>
+
 
     </ul>
     <div class="tab-content">
@@ -131,7 +133,31 @@
 
         </div>
       </div>
+
+      <div id="settings" class="tab-pane fade in">
+        <div class="container">
+
+          <div class="starter-template">
+            <label for="custom_time">Pomodoro</label>
+            <input type="number" id="time_new" name="custom_time" min="1" step="1" max="59" class="form-control" value="1">
+          </div>
+
+
+          <div class="container">
+
+            <div class="starter-template">
+              <div class="row">
+                <div>
+                  <button type="button" class="btn btn-large btn-primary full-width" id="setting_submit"><span class="glyphicon glyphicon-floppy-save"></span></button>
+                </div>
+              </div>
+            </div>
+  
+
+        </div>
     </div>
+      
+
 
     <audio id='notiSound' src='audio/alert.wav' loop/>
 
