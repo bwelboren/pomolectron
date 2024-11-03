@@ -98,3 +98,7 @@ h1 {
         font-size: 5em;
     }
 }
+
+.draggable {
+  -webkit-app-region: drag;
+}

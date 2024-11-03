@@ -37,8 +37,8 @@ class Timer {
         this.resetTimer('#time_short');     
         this.resetTimer('#time_long');     
 
-        $("#start").show();
-        $("#stop").hide();
+        resetButtons();
+
 
       }
     }, 1000);
